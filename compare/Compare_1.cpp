@@ -1,4 +1,4 @@
-// compare.cpp: определяет точку входа для консольного приложения.
+// compare.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 #include "stdafx.h"
@@ -11,7 +11,6 @@ using namespace std;
 bool CompareFiles(ifstream & file1, ifstream & file2, int & numberStr)
 {
 	string s1, s2;
-	int i = 0;
 
 	while (!file1.eof() || !file2.eof())
 	{
