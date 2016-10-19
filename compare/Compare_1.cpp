@@ -25,8 +25,6 @@ bool CompareFiles(ifstream & file1, ifstream & file2, int & numberStr)
 
 int main(int argc, char* argv[])
 {
-	setlocale(LC_ALL, "Russian");
-
 	if (argc != 3)
 	{
 		cout << "Invalid arguments count." << endl;
