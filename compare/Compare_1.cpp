@@ -31,8 +31,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	ifstream file1(argv[1]);
-	ifstream file2(argv[2]);
+	ifstream file1(argv[1]), file2(argv[2]);
 
 	if (!file1.is_open())
 	{
