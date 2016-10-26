@@ -27,7 +27,8 @@ int main(int argc, char* argv[])
 {
 	if (argc != 3)
 	{
-		cout << "Invalid arguments count." << endl;
+		cout << "Invalid arguments count\n" 
+			      <<"Usage: Compeare.exe <input file> <input file>\n"
 		return 1;
 	}
 
