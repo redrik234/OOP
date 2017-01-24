@@ -9,15 +9,23 @@ const size_t matrixSize = 3;
 typedef double Matrix3x3[matrixSize][matrixSize];
 typedef double Matrix2x2[2][2];
 
-void FillMatrix(istream & inputFile, Matrix3x3 matrix)
+bool FillMatrix(istream &inputFile, Matrix3x3 matrix)
 {
+	float number;
+
 	for (size_t i = 0; i < matrixSize; ++i)
 	{
 		for (size_t j = 0; j < matrixSize; ++j)
 		{
-			inputFile >> matrix[i][j];
+			if (!(inputFile >> number))
+			{
+				cout << "Wrong input matrix\n";
+				return false;
+			}
+			matrix[i][j] = number;
 		}
 	}
+	return true;
 }
 
 void OutputMatrix(ostream & output, Matrix3x3 matrix)
@@ -111,7 +119,8 @@ int main(int argc, char * argv[])
 
 	Matrix3x3 matrix;
 
-	FillMatrix(input, matrix);
+	if (!FillMatrix(input, matrix))
+		return 1;
 
 	Matrix3x3 invertibleMatrix;
 
