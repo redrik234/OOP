@@ -59,11 +59,9 @@ double ReceiveMinor(Matrix3x3 matrix, size_t row, size_t col)
 					++n;
 				}
 			}
-
 			++m;
 		}
 	}
-
 	return (minorMatrix[0][0] * minorMatrix[1][1] - minorMatrix[1][0] * minorMatrix[0][1]);
 }
 
