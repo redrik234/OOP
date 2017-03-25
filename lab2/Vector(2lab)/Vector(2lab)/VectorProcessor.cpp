@@ -15,19 +15,34 @@ using namespace std::placeholders;
 using namespace boost::phoenix::placeholders;
 using boost::transform;
 
-vector<double> ReadVector(istream &input)
+vector<double> ReadVector(istream & input)
 {
 	vector<double> numbers(istream_iterator<double>(input), (istream_iterator<double>()));
 	return numbers;
 }
 
-void ProcessVector(vector<double> &numbers)
+void ProcessVector(vector<double> & numbers)
 {
-	if (!numbers.empty())
+
+	/*if (!numbers.empty())
 	{
 		auto maxNumber = max_element(numbers.begin(), numbers.end());
 		boost::transform(numbers, numbers.begin(), arg1 / (*maxNumber / 2));
+	}*/
+
+	vector<double> tmp;
+
+	if (!numbers.empty())
+	{
+		auto maxNumber = max_element(numbers.begin(), numbers.end());
+		transform(numbers.begin(), numbers.end(), back_inserter(tmp),
+			[=](double number)->double 
+		{
+			return number / (*maxNumber / 2);
+		});
 	}
+
+	numbers = tmp;
 }
 
 void SortVector(vector<double> & numbers)

@@ -4,10 +4,12 @@
 #include "stdafx.h"
 #include "HTML_Encode.h"
 #include <map>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-map<char, string> encodeMap =
+vector<pair<char, string>> encodeArr = 
 {
 	{ '<', "&lt;" },
 	{ '>', "&gt;" },
@@ -22,10 +24,15 @@ string HtmlEncode(string const & text)
 
 	for (auto ch : text)
 	{
-		auto locationInMap = encodeMap.find(ch);
-		if (locationInMap != encodeMap.end())
+		auto it = find_if(encodeArr.begin(), encodeArr.end(), 
+			[=](pair<char, string> symbol) 
 		{
-			encodeText += locationInMap->second;
+			return symbol.first == ch; 
+		});
+
+		if (it != encodeArr.end())
+		{
+			encodeText += it->second;
 		}
 		else
 		{
