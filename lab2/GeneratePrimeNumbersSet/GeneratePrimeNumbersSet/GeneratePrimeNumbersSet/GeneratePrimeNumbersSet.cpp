@@ -9,10 +9,9 @@ using namespace std;
 const int MAX_NUMBER = 100000000;
 const int MIN_PRIME = 2;
 
-set<int> GeneratePrimeNumbersSet(int upperBound)
+vector<bool> GetPrimeNumbers(int & upperBound)
 {
 	vector<bool>isPrime(upperBound + 1, true);
-	set<int>primes;
 
 	isPrime[0] = false;
 
@@ -31,10 +30,18 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 			}
 		}
 	}
+	return isPrime;
+}
+
+set<int> GeneratePrimeNumbersSet(int upperBound)
+{
+	set<int>primes;
+
+	vector<bool> isPrime = GetPrimeNumbers(upperBound);
 
 	if (upperBound >= MIN_PRIME && upperBound <= MAX_NUMBER)
 	{
-		for (int i = MIN_PRIME; i < upperBound; ++i)
+		for (int i = MIN_PRIME; i <= upperBound; ++i)
 		{
 			if (isPrime[i])
 			{
@@ -42,7 +49,6 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 			}
 		}
 	}
-	
+
 	return primes;
 }
-
