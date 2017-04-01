@@ -21,7 +21,7 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 		isPrime[1] = false;
 	}
 
-	for (int i = MIN_PRIME; i <= upperBound; ++i)
+	for (int i = MIN_PRIME; i*i <= upperBound; ++i)
 	{
 		if (isPrime[i])
 		{
@@ -34,7 +34,7 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 
 	if (upperBound >= MIN_PRIME && upperBound <= MAX_NUMBER)
 	{
-		for (unsigned int i = MIN_PRIME; i < isPrime.size(); ++i)
+		for (int i = MIN_PRIME; i < upperBound; ++i)
 		{
 			if (isPrime[i])
 			{

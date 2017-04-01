@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	//OutputSet(GeneratePrimeNumbersSet(upperBound));
 	set<int> primeNumbers = GeneratePrimeNumbersSet(upperBound);
 
 	cout << primeNumbers.size() << endl;
