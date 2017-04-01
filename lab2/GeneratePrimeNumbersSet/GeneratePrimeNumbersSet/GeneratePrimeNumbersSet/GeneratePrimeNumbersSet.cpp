@@ -1,4 +1,4 @@
-// GeneratePrimeNumbersSet.cpp: определяет точку входа для консольного приложения.
+// GeneratePrimeNumbersSet.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 #include "stdafx.h"
@@ -21,7 +21,7 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 		isPrime[1] = false;
 	}
 
-	for (int i = MIN_PRIME; i <= upperBound; ++i)
+	for (int i = MIN_PRIME; i <= upperBound / i; ++i)
 	{
 		if (isPrime[i])
 		{
