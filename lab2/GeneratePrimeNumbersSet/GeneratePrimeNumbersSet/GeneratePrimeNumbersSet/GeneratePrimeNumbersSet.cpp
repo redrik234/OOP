@@ -11,32 +11,32 @@ const int MIN_PRIME = 2;
 
 set<int> GeneratePrimeNumbersSet(int upperBound)
 {
-	vector<bool>numbers(upperBound + 1, true);
+	vector<bool>isPrime(upperBound + 1, true);
 	set<int>primes;
 
-	numbers[0] = false;
+	isPrime[0] = false;
 
 	if (upperBound != 0)
 	{
-		numbers[1] = false;
+		isPrime[1] = false;
 	}
 
-	for (int i = MIN_PRIME; i <= upperBound / i; ++i)
+	for (int i = MIN_PRIME; i <= upperBound; ++i)
 	{
-		if (numbers[i])
+		if (isPrime[i])
 		{
 			for (int j = i * i; j <= upperBound; j = (i > MIN_PRIME) ? (j + 2 * i) : (j + i))
 			{
-				numbers[j] = false;
+				isPrime[j] = false;
 			}
 		}
 	}
 
 	if (upperBound >= MIN_PRIME && upperBound <= MAX_NUMBER)
 	{
-		for (unsigned int i = MIN_PRIME; i < numbers.size(); ++i)
+		for (unsigned int i = MIN_PRIME; i < isPrime.size(); ++i)
 		{
-			if (numbers[i])
+			if (isPrime[i])
 			{
 				primes.insert(i);
 			}
