@@ -1,4 +1,4 @@
-// GeneratePrimeNumbersSet.cpp: определяет точку входа для консольного приложения.
+// GeneratePrimeNumbersSet.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 #include "stdafx.h"
@@ -9,7 +9,7 @@ using namespace std;
 const int MAX_NUMBER = 100000000;
 const int MIN_PRIME = 2;
 
-vector<bool> GetPrimeNumbers(int & upperBound)
+vector<bool> CreateSieve(int & upperBound)
 {
 	vector<bool>isPrime(upperBound + 1, true);
 
@@ -37,7 +37,7 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 {
 	set<int>primes;
 
-	vector<bool> isPrime = GetPrimeNumbers(upperBound);
+	vector<bool> isPrime = CreateSieve(upperBound);
 
 	if (upperBound >= MIN_PRIME && upperBound <= MAX_NUMBER)
 	{
