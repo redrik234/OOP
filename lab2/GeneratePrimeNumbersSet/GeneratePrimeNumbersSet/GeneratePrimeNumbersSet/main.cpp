@@ -5,11 +5,6 @@ using namespace std;
 
 const int MAX_PRIME = 100000000;
 
-void OutputSet(set<int> set)
-{
-	copy(set.begin(), set.end(), ostream_iterator<int>(cout, " "));
-}
-
 int main(int argc, char *argv[])
 {
 
