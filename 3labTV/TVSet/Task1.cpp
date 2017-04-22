@@ -18,7 +18,7 @@ void main()
 		cout << "> ";
 		if (!remoteControl.HandleCommand())
 		{
-			cout << "Unknown command! If you need help with commands, you can use command --help. " << endl;
+			cout << "Unknown command!" << endl;
 		}
 	}
 }
