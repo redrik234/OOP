@@ -31,9 +31,12 @@ BOOST_AUTO_TEST_SUITE(GeneratePrimeNumbersSet_function)
 		BOOST_CHECK(result == correctResult);
 	}
 
+#ifdef NDEBUG
 	BOOST_AUTO_TEST_CASE(check_size_vector_with_prime_numbers)
 	{
-		BOOST_CHECK_EQUAL(GeneratePrimeNumbersSet(100000000).size(), 5761455);
+		unsigned int result = 5761455;
+		BOOST_CHECK_EQUAL(GeneratePrimeNumbersSet(100000000).size(), result);
 	}
+#endif
 
 BOOST_AUTO_TEST_SUITE_END()

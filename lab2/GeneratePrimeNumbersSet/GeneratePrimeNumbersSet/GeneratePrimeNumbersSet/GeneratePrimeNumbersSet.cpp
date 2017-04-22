@@ -6,12 +6,12 @@
 
 using namespace std;
 
-const int MAX_NUMBER = 100000000;
-const int MIN_PRIME = 2;
+static const int MAX_NUMBER = 100000000;
+static const int MIN_PRIME = 2;
 
-vector<bool> CreateSieve(int & upperBound)
+vector<bool> CreateSieve(const int & upperBound)
 {
-	vector<bool>isPrime(upperBound + 1, true);
+	vector<bool> isPrime(upperBound + 1, true);
 
 	isPrime[0] = false;
 
@@ -20,7 +20,7 @@ vector<bool> CreateSieve(int & upperBound)
 		isPrime[1] = false;
 	}
 
-	for (int i = MIN_PRIME; i*i <= upperBound; ++i)
+	for (int i = MIN_PRIME; i * i <= upperBound; ++i)
 	{
 		if (isPrime[i])
 		{
@@ -37,15 +37,15 @@ set<int> GeneratePrimeNumbersSet(int upperBound)
 {
 	set<int>primes;
 
-	vector<bool> isPrime = CreateSieve(upperBound);
-
 	if (upperBound >= MIN_PRIME && upperBound <= MAX_NUMBER)
 	{
+		vector<bool> isPrime = CreateSieve(upperBound);
+
 		for (int i = MIN_PRIME; i <= upperBound; ++i)
 		{
 			if (isPrime[i])
 			{
-				primes.insert(i);
+				primes.insert(primes.end(), i);
 			}
 		}
 	}
