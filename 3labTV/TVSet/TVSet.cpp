@@ -26,7 +26,7 @@ auto CTVSet::SearchChannelByNameInMap(const std::string & str)const
 		[&](auto a) {return a.second == str; }));
 }
 
-bool CTVSet::IsMapChannel(int channel) const
+bool CTVSet::IsMapChannel(int channel)const
 {
 	return SearchChannelInMap(channel) != m_channelMap.end();
 }
