@@ -71,7 +71,7 @@ const CRational operator-(const CRational & lValue, const CRational & rValue)
 	return operator+(lValue, -rValue);
 }
 
-const CRational & CRational::operator+=(const CRational & summand)
+CRational & CRational::operator+=(const CRational & summand)
 {
 	if (summand.GetNumerator() == 0)
 	{
@@ -83,13 +83,13 @@ const CRational & CRational::operator+=(const CRational & summand)
 	return *this;
 }
 
-const CRational & CRational::operator-=(const CRational & subtrahend)
+CRational & CRational::operator-=(const CRational & subtrahend)
 {
 	if (subtrahend.GetNumerator() == 0)
 	{
 		return *this;
 	}
-	CRational::operator+=(-subtrahend);
+	*this += (-subtrahend);
 	return *this;
 }
 
@@ -103,48 +103,46 @@ const CRational operator/(const CRational & lValue, const CRational & rValue)
 	return CRational(operator*(lValue, CRational(rValue.GetDenominator(), rValue.GetNumerator())));
 }
 
-const CRational & CRational::operator*=(const CRational & rValue)
+CRational & CRational::operator*=(const CRational & rValue)
 {
 	*this = *this * rValue;
 	return *this;
 }
 
-const CRational & CRational::operator/=(const CRational & rValue)
+CRational & CRational::operator/=(const CRational & rValue)
 {
 	*this = *this / rValue;
 	return *this;
 }
 
-const bool operator==(const CRational & lValue, const CRational & rValue)
+bool operator==(const CRational & lValue, const CRational & rValue)
 {
 	CRational l = lValue;
 	CRational r = rValue;
-	l.Normalize();
-	r.Normalize();
 	return (((l.GetNumerator() == r.GetNumerator()) && (r.GetDenominator() == l.GetDenominator())));
 }
 
-const bool operator!=(const CRational & lValue, const CRational & rValue)
+bool operator!=(const CRational & lValue, const CRational & rValue)
 {
 	return !(lValue == rValue);
 }
 
-const bool operator<(const CRational & lValue, const CRational & rValue)
+bool operator<(const CRational & lValue, const CRational & rValue)
 {
 	return (lValue.GetNumerator() * rValue.GetDenominator() < rValue.GetNumerator() * lValue.GetDenominator());
 }
 
-const bool operator>=(const CRational & lValue, const CRational & rValue)
+bool operator>=(const CRational & lValue, const CRational & rValue)
 {
 	return !(lValue < rValue);
 }
 
-const bool operator>(const CRational & lValue, const CRational & rValue)
+bool operator>(const CRational & lValue, const CRational & rValue)
 {
 	return (lValue.GetNumerator() * rValue.GetDenominator() > rValue.GetNumerator() * lValue.GetDenominator());
 }
 
-const bool operator<=(const CRational & lValue, const CRational & rValue)
+bool operator<=(const CRational & lValue, const CRational & rValue)
 {
 	return !(lValue > rValue);
 }
@@ -153,7 +151,7 @@ std::istream & operator>>(std::istream & input, CRational & rational)
 {
 	int numerator = 0;
 	int denominator = 1;
-	if ((input >> numerator) && (input.get() == '/') && (input >> denominator))
+	if ((input >> numerator) && (input.get() == '/') && (input >> denominator) && input.eof())
 	{
 		rational = CRational(numerator, denominator);
 	}

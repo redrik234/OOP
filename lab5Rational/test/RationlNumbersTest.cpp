@@ -360,10 +360,12 @@ BOOST_AUTO_TEST_CASE(has_operators_of_equivalence)
 	BOOST_CHECK(CRational(1, 2) == CRational(1, 2));
 	BOOST_CHECK(CRational(4, 1) == 4);
 	BOOST_CHECK(3 == CRational(3, 1));
+	BOOST_CHECK(!(4 == CRational(3, 1)));
 
 	BOOST_CHECK(CRational(1, 2) != CRational(2, 3));
 	BOOST_CHECK(CRational(1, 2) != 7);
 	BOOST_CHECK(3 != CRational(2, 3));
+	BOOST_CHECK(!(3 != CRational(3, 1)));
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -382,7 +384,9 @@ BOOST_AUTO_TEST_CASE(has_operators_of_comparison)
 	BOOST_CHECK(CRational(1, 2) >= CRational(1, 3));
 	BOOST_CHECK(!(CRational(1, 2) <= CRational(1, 3)));
 	BOOST_CHECK(CRational(3, 1) > 2);
+	BOOST_CHECK(!(CRational(3, 1) < 2));
 	BOOST_CHECK(CRational(1, 2) < 7);
+	BOOST_CHECK(!(CRational(1, 2) > 7));
 	BOOST_CHECK(3 <= CRational(7, 2));
 	BOOST_CHECK(!(3 >= CRational(8, 2)));
 }
@@ -407,17 +411,46 @@ BOOST_AUTO_TEST_CASE(can_be_printed_to_ostream)
 //////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(can_be_entered_from_istream)
 {
-	CRational r;
-	istringstream input("0");
-	input >> r;
-	VerifyRational(r, 0, 1);
+	{
+		CRational r;
+		istringstream input("0");
+		input >> r;
+		VerifyRational(r, 0, 1);
+	}
+
+	{
+		CRational r;
+		istringstream input("7/8");
+		input >> r;
+		VerifyRational(r, 7, 8);
+	}
 }
 
 BOOST_AUTO_TEST_CASE(invalid_input_string_can_not_be_entered)
 {
-	CRational r;
-	istringstream input("7*15");
-	BOOST_CHECK(input.failbit);
+	{
+		CRational r;
+		istringstream input("7*15");
+		input >> r;
+		BOOST_CHECK(input.failbit);
+		VerifyRational(r, 0, 1);
+	}
+
+	{
+		CRational r;
+		istringstream input("7s/15");
+		input >> r;
+		BOOST_CHECK(input.failbit);
+		VerifyRational(r, 0, 1);
+	}
+
+	{
+		CRational r;
+		istringstream input("7/1s5");
+		input >> r;
+		BOOST_CHECK(input.failbit);
+		VerifyRational(r, 0, 1);
+	}
 }
 
 BOOST_AUTO_TEST_SUITE_END()
