@@ -167,13 +167,13 @@ BOOST_FIXTURE_TEST_SUITE(Remote_Control, RemoteControlFixture)
         tv.TurnOn();
 		VerifyCommandHandling("SetChannelName 5 give", 1, "Name set\n");
 		VerifyCommandHandling("Info", 1, "TV is turned on\nChannel is: 1\n5 - give\n");
-		VerifyCommandHandling("DeleteChannelName give", 1, "Name has been deleted\n");
+		VerifyCommandHandling("DeleteChannelByName give", 1, "Name has been deleted\n");
 		VerifyCommandHandling("Info", 1, "TV is turned on\nChannel is: 1\n");
 	}
 	BOOST_AUTO_TEST_CASE(cant_delete_name_of_channel_without_setting_name)
 	{
 		tv.TurnOn();
-		VerifyCommandHandling("DeleteChannelName give", 1, "The channel was not found by name\n");
+		VerifyCommandHandling("DeleteChannelByName give", 1, "The channel was not found by name\n");
 	}
 	BOOST_AUTO_TEST_CASE(can_select_channel_by_empty_name_without_setting_empty_name)
 	{

@@ -15,7 +15,7 @@ std::string DeleteSpaces(const std::string & channelName)
 	return str;
 }
 
-auto CTVSet::SearchChannelInMap(int channel)const
+auto CTVSet::SearchChannelByNumberInMap(int channel)const
 {
 	return m_channelMap.find(channel);
 }
@@ -26,12 +26,12 @@ auto CTVSet::SearchChannelByNameInMap(const std::string & str)const
 		[&](auto a) {return a.second == str; }));
 }
 
-bool CTVSet::IsMapChannel(int channel)const
+bool CTVSet::IsChannelExists(int channel)const
 {
-	return SearchChannelInMap(channel) != m_channelMap.end();
+	return SearchChannelByNumberInMap(channel) != m_channelMap.end();
 }
 
-bool CTVSet::IsMapChannel(const std::string & str)const
+bool CTVSet::IsChannelExists(const std::string & str)const
 {
 	return SearchChannelByNameInMap(str) != m_channelMap.end();
 }
@@ -92,7 +92,7 @@ int CTVSet::GetChannelByName(const std::string & channelName)const
 {
 	int num = 0;
 	std::string str = DeleteSpaces(channelName);
-	if (IsMapChannel(str))
+	if (IsChannelExists(str))
 	{
 		num = SearchChannelByNameInMap(str)->first;
 	}
@@ -103,10 +103,10 @@ bool CTVSet::SetChannelName(int channel, std::string const & channelName)
 	std::string str = DeleteSpaces(channelName);
 	if (IsAvailableChannel(channel) && m_isOn && !str.empty())
 	{
-		DeleteChannelName(str);
-		if (IsMapChannel(channel))
+		DeleteChannelByName(str);
+		if (IsChannelExists(channel))
 		{
-			m_channelMap.erase(SearchChannelInMap(channel));
+			m_channelMap.erase(SearchChannelByNumberInMap(channel));
 		}
 		auto it = m_channelMap.begin();
 		m_channelMap.insert(it, std::pair<int, std::string>(channel, str));
@@ -114,10 +114,10 @@ bool CTVSet::SetChannelName(int channel, std::string const & channelName)
 	}
 	return false;
 }
-bool CTVSet::DeleteChannelName(const std::string & channelName)
+bool CTVSet::DeleteChannelByName(const std::string & channelName)
 {
 	std::string str = DeleteSpaces(channelName);
-	if (IsMapChannel(str) && m_isOn)
+	if (IsChannelExists(str) && m_isOn)
 	{
 		m_channelMap.erase(SearchChannelByNameInMap(str));
 		return true;
@@ -127,9 +127,9 @@ bool CTVSet::DeleteChannelName(const std::string & channelName)
 std::string CTVSet::GetChannelName(int channel)const
 {
 	std::string str;
-	if (IsAvailableChannel(channel) && m_isOn && IsMapChannel(channel))
+	if (IsAvailableChannel(channel) && m_isOn && IsChannelExists(channel))
 	{
-		str = SearchChannelInMap(channel)->second;
+		str = SearchChannelByNumberInMap(channel)->second;
 	}
 	return str;
 }

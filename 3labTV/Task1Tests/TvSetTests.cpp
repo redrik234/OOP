@@ -96,7 +96,7 @@ BOOST_FIXTURE_TEST_SUITE(TVSet, TVSetFixture)
 		}
 		BOOST_AUTO_TEST_CASE(cant_delete_name_of_channel_without_setting_name)
 		{
-			BOOST_CHECK(!tv.DeleteChannelName("five"));
+			BOOST_CHECK(!tv.DeleteChannelByName("five"));
 		}
 	BOOST_AUTO_TEST_SUITE_END()
 
@@ -144,7 +144,7 @@ BOOST_FIXTURE_TEST_SUITE(TVSet, TVSetFixture)
 		}
 		BOOST_AUTO_TEST_CASE(can_delete_channel_name)
 		{
-			BOOST_CHECK(tv.DeleteChannelName("five"));
+			BOOST_CHECK(tv.DeleteChannelByName("five"));
 			BOOST_CHECK(tv.GetChannelName(5).empty());
 			BOOST_CHECK(tv.GetChannelByName("five") == 0);
 		}

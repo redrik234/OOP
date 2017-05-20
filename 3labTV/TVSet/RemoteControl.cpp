@@ -1,14 +1,9 @@
 #include "stdafx.h"
 #include "RemoteControl.h"
 #include "TVSet.h"
-#include <windows.h>
-#include <locale>
 
 using namespace std;
 using namespace std::placeholders;
-
-
-
 
 CRemoteControl::CRemoteControl(CTVSet & tv, std::istream & input, std::ostream & output)
 	: m_tv(tv)
@@ -21,7 +16,7 @@ CRemoteControl::CRemoteControl(CTVSet & tv, std::istream & input, std::ostream &
 		{ "SelectChannel", bind(&CRemoteControl::SelectChannel, this, _1) },
 		{ "SelectPreviousChannel", bind(&CRemoteControl::SelectPreviousChannel, this, _1) },
 		{ "SetChannelName", bind(&CRemoteControl::SetChannelName, this, _1) },
-		{ "DeleteChannelName", bind(&CRemoteControl::DeleteChannelName, this, _1) },
+		{ "DeleteChannelByName", bind(&CRemoteControl::DeleteChannelByName, this, _1) },
 		{ "GetChannelName", bind(&CRemoteControl::GetChannelName, this, _1) },
 		{ "GetChannelByName", bind(&CRemoteControl::GetChannelByName, this, _1) },
 	})
@@ -139,13 +134,13 @@ bool CRemoteControl::SetChannelName(std::istream & args)
 	return true;
 }
 
-bool CRemoteControl::DeleteChannelName(std::istream & args)
+bool CRemoteControl::DeleteChannelByName(std::istream & args)
 {
 	if (m_tv.IsTurnedOn())
 	{
 		string str;
 		getline(args, str);
-		if (m_tv.DeleteChannelName(str))
+		if (m_tv.DeleteChannelByName(str))
 		{
 			m_output << "Name has been deleted\n";
 		}

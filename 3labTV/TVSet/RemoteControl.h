@@ -18,7 +18,7 @@ private:
 	bool SelectChannel(std::istream & args);
 	bool SelectPreviousChannel(std::istream & args);
 	bool SetChannelName(std::istream & args);
-	bool DeleteChannelName(std::istream & args);
+	bool DeleteChannelByName(std::istream & args);
 	bool GetChannelName(std::istream & args);
 	bool GetChannelByName(std::istream & args);
 private:

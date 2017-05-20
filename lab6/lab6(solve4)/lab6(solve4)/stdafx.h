@@ -11,13 +11,11 @@
 #include <tchar.h>
 
 #include <iostream>
-#include <string>
-#include <sstream>
-#include <functional>
-#include <map>
+#include <vector>
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <algorithm>
-#include <iterator>
-#include <boost/algorithm/string/trim.hpp>
-#include <windows.h>
-#include <locale>
+#include <functional>
+
+
 // TODO: reference additional headers your program requires here

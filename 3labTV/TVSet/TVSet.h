@@ -11,7 +11,7 @@ public:
 	int GetPreviousChannel()const;
 	bool SelectChannel(const std::string & channel);
 	bool SetChannelName(int channel, const std::string & channelName);
-	bool DeleteChannelName(const std::string & channelName);
+	bool DeleteChannelByName(const std::string & channelName);
 	std::string CTVSet::GetChannelName(int channel)const;
 	int GetChannelByName(const std::string & channelName)const;
 	bool SelectPreviousChannel();
@@ -20,9 +20,9 @@ public:
 
 private:
 	auto CTVSet::SearchChannelByNameInMap(const std::string & str)const;
-	auto CTVSet::SearchChannelInMap(int num)const;
-	bool IsMapChannel(int channel) const;
-	bool IsMapChannel(const std::string & str)const;
+	auto CTVSet::SearchChannelByNumberInMap(int num)const;
+	bool IsChannelExists(int channel) const;
+	bool IsChannelExists(const std::string & str)const;
 	bool m_isOn = false;
 	int m_selectedChannel = 1;
 	int m_prevChannel = 1;
