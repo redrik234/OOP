@@ -17,7 +17,7 @@ bool RootsAreEqual(EquationRoots const &expectedRoots1, EquationRoots const &exp
 
 BOOST_AUTO_TEST_SUITE(solve4_function)
 
-	BOOST_AUTO_TEST_CASE(can_find_equation_roots)
+	BOOST_AUTO_TEST_CASE(can_find_equation_roots_when_descriminant_is_0)
 	{
 		EquationRoots solution = Solve4(1, 4, 6, 4, 1);
 
@@ -41,17 +41,6 @@ BOOST_AUTO_TEST_SUITE(solve4_function)
 		BOOST_CHECK(RootsAreEqual(expectedRoots, solution));
 	}
 	
-	BOOST_AUTO_TEST_CASE(can_find_an_equation_with_root_1)
-	{
-		EquationRoots solution = Solve4(1, 0, 0, 0, 0);
-
-		EquationRoots expectedRoots;
-		expectedRoots.numRoots = 1;
-		expectedRoots.roots[0] = 0;
-
-		BOOST_CHECK(RootsAreEqual(expectedRoots, solution));
-	}
-
 	BOOST_AUTO_TEST_CASE(can_find_an_equation_with_roots_3)
 	{
 		EquationRoots solution = Solve4(1, 0, -1, 0, 0);
