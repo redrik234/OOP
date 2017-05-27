@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Solve4.h"
 
+static const int coefficQ = 9;
+static const int coefficR = 54;
+
 using namespace std;
 
 int Sign(const double value)
@@ -60,8 +63,8 @@ EquationRoots Solve2(double b, double c)
 
 EquationRoots Solve3(double a, double b, double c)
 {
-	double q = (pow(a, 2) - 3 * b) / 9;
-	double r = (2 * pow(a, 3) - 9 * a * b + 27 * c) / 54;
+	double q = (pow(a, 2) - 3 * b) / coefficQ;
+	double r = (2 * pow(a, 3) - 9 * a * b + 27 * c) / coefficR;
 
 	double s = pow(q, 3) - pow(r, 2);
 
