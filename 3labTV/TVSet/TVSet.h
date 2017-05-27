@@ -2,6 +2,7 @@
 
 class CTVSet
 {
+	typedef std::map<int, std::string> ChannelMap;
 public:
 	bool IsTurnedOn()const;
 	void TurnOn();
@@ -15,7 +16,6 @@ public:
 	std::string CTVSet::GetChannelName(int channel)const;
 	int GetChannelByName(const std::string & channelName)const;
 	bool SelectPreviousChannel();
-	typedef std::map<int, std::string> ChannelMap;
 	void CTVSet::PrintMap(std::ostream & out)const;
 
 private:

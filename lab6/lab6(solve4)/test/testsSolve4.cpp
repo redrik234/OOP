@@ -27,9 +27,13 @@ BOOST_AUTO_TEST_SUITE(solve4_function)
 		expectedRoots.roots[1] = -1;
 
 		BOOST_CHECK(RootsAreEqual(expectedRoots, solution));
+	}
 
-		solution = Solve4(1, 4, 2, 4, 0);
+	BOOST_AUTO_TEST_CASE(can_find_equation_root_with_normal_parameters)
+	{
+		EquationRoots solution = Solve4(1, 4, 2, 4, 0);
 
+		EquationRoots expectedRoots;
 		expectedRoots.numRoots = 2;
 		expectedRoots.roots[0] = -3.7511;
 		expectedRoots.roots[1] = 0;
@@ -37,6 +41,17 @@ BOOST_AUTO_TEST_SUITE(solve4_function)
 		BOOST_CHECK(RootsAreEqual(expectedRoots, solution));
 	}
 	
+	BOOST_AUTO_TEST_CASE(can_find_an_equation_with_root_1)
+	{
+		EquationRoots solution = Solve4(1, 0, 0, 0, 0);
+
+		EquationRoots expectedRoots;
+		expectedRoots.numRoots = 1;
+		expectedRoots.roots[0] = 0;
+
+		BOOST_CHECK(RootsAreEqual(expectedRoots, solution));
+	}
+
 	BOOST_AUTO_TEST_CASE(can_find_an_equation_with_roots_3)
 	{
 		EquationRoots solution = Solve4(1, 0, -1, 0, 0);

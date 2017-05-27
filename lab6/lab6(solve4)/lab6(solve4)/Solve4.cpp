@@ -5,12 +5,18 @@ using namespace std;
 
 int Sign(const double value)
 {
-	if (value > 0) return 1;
-	if (value < 0) return -1;
-	else return 0;
+	if (value > 0)
+	{
+		return 1;
+	}
+	if (value < 0)
+	{
+		return -1;
+	}
+	return 0;
 }
 
-EquationRoots MergeRoots(EquationRoots equationRoots1, EquationRoots equationRoots2)
+EquationRoots MergeRoots(const EquationRoots & equationRoots1, const EquationRoots & equationRoots2)
 {
 	EquationRoots mergeRoots;
 	int numRoot = 0;
@@ -132,7 +138,7 @@ EquationRoots Solve4(double a, double b, double c, double d, double e)
 	return MergeRoots(equationRoots21, equationRoots22);
 }
 
-void PrintRoots(EquationRoots equationRoots, ostream &strm)
+void PrintRoots(const EquationRoots & equationRoots, ostream &strm)
 {
 	for (size_t i = 0; i < equationRoots.numRoots; ++i)
 	{

@@ -120,7 +120,7 @@ bool CRemoteControl::SetChannelName(std::istream & args)
 		getline(args, str);
 		if (m_tv.SetChannelName(num, str))
 		{
-			m_output << "Name set\n";
+			m_output << "Channel name selected\n";
 		}
 		else
 		{

@@ -5,5 +5,5 @@ struct EquationRoots
 	double roots[4];
 };
 
-void PrintRoots(EquationRoots equationRoots, std::ostream &strm);
+void PrintRoots(const EquationRoots & equationRoots, std::ostream &strm);
 EquationRoots Solve4(double a, double b, double c, double d, double e);

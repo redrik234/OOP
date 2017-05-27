@@ -9,12 +9,10 @@ int main()
 	EquationRoots equationRoots;
 
 	std::vector<double> numbers;
+	double number;
 
-	while (!std::cin.eof())
+	while (std::cin >> number && !std::cin.eof())
 	{
-		double number;
-		std::cin >> number;
-
 		if (numbers.size() != 5)
 		{
 			numbers.push_back(number);

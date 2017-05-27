@@ -2,17 +2,18 @@
 #include "TVSet.h"
 #include <regex>
 
-
-
+namespace
+{
 std::string DeleteSpaces(const std::string & channelName)
 {
-	std::string str = std::regex_replace(channelName, std::regex("[ ]+"), " ");
+	auto str = std::regex_replace(channelName, std::regex("[ ]+"), " ");
 	boost::trim(str);
 	if (str == " ")
 	{
 		str.clear();
 	}
 	return str;
+}
 }
 
 auto CTVSet::SearchChannelByNumberInMap(int channel)const
@@ -23,7 +24,7 @@ auto CTVSet::SearchChannelByNumberInMap(int channel)const
 auto CTVSet::SearchChannelByNameInMap(const std::string & str)const
 {
 	return (std::find_if(m_channelMap.begin(), m_channelMap.end(),
-		[&](auto a) {return a.second == str; }));
+		[=](auto a) {return a.second == str; }));
 }
 
 bool CTVSet::IsChannelExists(int channel)const
@@ -109,7 +110,7 @@ bool CTVSet::SetChannelName(int channel, std::string const & channelName)
 			m_channelMap.erase(SearchChannelByNumberInMap(channel));
 		}
 		auto it = m_channelMap.begin();
-		m_channelMap.insert(it, std::pair<int, std::string>(channel, str));
+		m_channelMap.insert(it, { channel, str });
 		return true;
 	}
 	return false;
