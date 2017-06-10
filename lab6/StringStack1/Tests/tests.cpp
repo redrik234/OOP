@@ -65,5 +65,18 @@ BOOST_FIXTURE_TEST_SUITE(Stack, EmptyStack)
 			stringStack.Clear();
 			BOOST_CHECK_EQUAL(stringStack.GetSize(), size_t(0));
 		}
+
+		BOOST_AUTO_TEST_CASE(can_not_pop_element_when_stack_has_been_cleared)
+		{
+			stringStack.Push("a");
+			stringStack.Push("b");
+			stringStack.Push("c");
+
+			BOOST_CHECK_EQUAL(stringStack.GetSize(), size_t(3));
+
+			stringStack.Clear();
+
+			BOOST_CHECK_THROW(stringStack.Pop(), std::logic_error);
+		}
 	BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()

@@ -49,7 +49,7 @@ void CStringStack::Clear()
 {
 	while (m_top != nullptr)
 	{
-		m_size--;
+		--m_size;
 		m_top = m_top->next;
 	}
 }

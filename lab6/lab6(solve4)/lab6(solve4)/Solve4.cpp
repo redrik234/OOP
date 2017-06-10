@@ -27,15 +27,15 @@ EquationRoots MergeRoots(const EquationRoots & equationRoots1, const EquationRoo
 	EquationRoots mergeRoots;
 	int numRoot = 0;
 
-	for (size_t i = 0; i < equationRoots1.numRoots; i++)
+	for (size_t i = 0; i < equationRoots1.numRoots; ++i)
 	{
 		mergeRoots.roots[numRoot] = equationRoots1.roots[i];
-		numRoot++;
+		++numRoot;
 	}
-	for (size_t i = 0; i < equationRoots2.numRoots; i++)
+	for (size_t i = 0; i < equationRoots2.numRoots; ++i)
 	{
 		mergeRoots.roots[numRoot] = equationRoots2.roots[i];
-		numRoot++;
+		++numRoot;
 	}
 	mergeRoots.numRoots = numRoot;
 	return mergeRoots;
