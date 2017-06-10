@@ -6,8 +6,6 @@
 
 int main()
 {
-	std::vector<char> arr = { 'a', 'b', 'c' };
-	std::cout << ArraySum(arr) << std::endl;
     return 0;
 }
 
