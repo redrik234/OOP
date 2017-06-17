@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 	if (argc != 2)
 	{
 		cout << "Invalid arguements count." << endl;
-		cout << "Usage Shapes.exe <inputFile.txt>" << endl;
+		cout << "Usage lab4.exe <inputFile.txt>" << endl;
 
 		return 1;
 	}

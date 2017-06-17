@@ -11,8 +11,8 @@ public:
 
 	std::string ToString() const;
 
-	bool operator==(CPoint const &point) const;
-	bool operator!=(CPoint const &point) const;
+	bool operator==(const CPoint &point) const;
+	bool operator!=(const CPoint &point) const;
 
 	double x;
 	double y;
