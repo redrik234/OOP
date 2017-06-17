@@ -23,17 +23,17 @@ CRemoteControl::CRemoteControl(istream & input, ostream & output)
 {
 }
 
-bool CmpAreas(const shared_ptr<IShape> &firstShape, const shared_ptr<IShape> &secondShape)
+bool CmpAreas(const shared_ptr<IShape> & firstShape, const shared_ptr<IShape> & secondShape)
 {
 	return firstShape->GetArea() < secondShape->GetArea();
 }
 
-bool CmpPerimeters(const shared_ptr<IShape> &firstShape, const shared_ptr<IShape> &secondShape)
+bool CmpPerimeters(const shared_ptr<IShape> & firstShape, const shared_ptr<IShape> & secondShape)
 {
 	return firstShape->GetPerimeter() < secondShape->GetPerimeter();
 }
 
-void CRemoteControl::PrintInfo(ostream &output)
+void CRemoteControl::PrintInfo(ostream & output)
 {
 	if (!m_shapes.empty())
 	{
@@ -85,7 +85,7 @@ bool CRemoteControl::HandleCommand()
 	return false;
 }
 
-bool CRemoteControl::CreateLineSegment(istream &args)
+bool CRemoteControl::CreateLineSegment(istream & args)
 {
 	string shapeProperties;
 	getline(args, shapeProperties);
@@ -115,7 +115,7 @@ bool CRemoteControl::CreateLineSegment(istream &args)
 	return true;
 }
 
-bool CRemoteControl::CreateCircle(istream &args)
+bool CRemoteControl::CreateCircle(istream & args)
 {
 	string shapeProperties;
 	getline(args, shapeProperties);
@@ -146,7 +146,7 @@ bool CRemoteControl::CreateCircle(istream &args)
 	return true;
 }
 
-bool CRemoteControl::CreateTriangle(istream &args)
+bool CRemoteControl::CreateTriangle(istream & args)
 {
 	string shapeProperties;
 	getline(args, shapeProperties);
@@ -176,7 +176,7 @@ bool CRemoteControl::CreateTriangle(istream &args)
 	return true;
 }
 
-bool CRemoteControl::CreateRectangle(istream &args)
+bool CRemoteControl::CreateRectangle(istream & args)
 {
 	string shapeProperties;
 	getline(args, shapeProperties);
