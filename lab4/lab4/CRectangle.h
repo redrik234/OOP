@@ -11,20 +11,19 @@ public:
 	CRectangle(CPoint leftTopPoint, double width, double height, string outlineColor, string fillColor);
 	~CRectangle() = default;
 
-	double GetArea() const;
-	double GetPerimeter() const;
+	double GetArea() const override;
+	double GetPerimeter() const override;
 
-	string ToString() const;
-	string GetOutlineColor() const;
-	string GetFillColor() const;
+	string GetOutlineColor() const override;
+	string GetFillColor() const override;
 
 	CPoint GetLeftTop() const;
 	CPoint GetRightBottom() const;
 	double GetWidth() const;
 	double GetHeight() const;
+protected:
+	void AppendProperties(ostream & strm) const override;
 private:
-	string m_name = "rectangle";
-
 	CPoint m_leftTop;
 	double m_width;
 	double m_height;

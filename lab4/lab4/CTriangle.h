@@ -10,17 +10,17 @@ public:
 	CTriangle(CPoint vertex1, CPoint vertex2, CPoint vertex3, string outlineColor, string fillColor);
 	~CTriangle() = default;
 
-	double GetArea() const;
-	double GetPerimeter() const;
+	double GetArea() const override;
+	double GetPerimeter() const override;
 
-	string ToString() const;
-	string GetOutlineColor() const;
-	string GetFillColor() const;
+	string GetOutlineColor() const override;
+	string GetFillColor() const override;
 
 	CPoint GetVertex1() const;
 	CPoint GetVertex2() const;
 	CPoint GetVertex3() const;
+protected:
+	void AppendProperties(std::ostream & strm) const override;
 private:
-	string m_name = "triangle";
 	vector<CPoint> m_vertices;
 };

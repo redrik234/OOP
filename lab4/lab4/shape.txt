@@ -1,0 +1,4 @@
+circle 120 -150 1 red #ffefff
+rectangle 2 1 -200 3000 blue black
+triangle 0 -23 0 4 4 0 #121345 black
+line 0 0 1 0 white

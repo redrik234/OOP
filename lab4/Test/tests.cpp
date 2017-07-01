@@ -40,18 +40,24 @@ struct RemoteControlFixture : RemoteControlDependencies
 struct DefaultShapes
 {
 	CLineSegment segment = CLineSegment(CPoint(1, 0), CPoint(15, 0), "ff0000");
-	CTriangle triangle = CTriangle(CPoint(0, 0), CPoint(0, 3), CPoint(4, 0), "0000ff", "ff0000");
+	CTriangle triangle = CTriangle(CPoint(0, 0), CPoint(0, 3), CPoint(4, 0), "1234ff", "ff1234");
 	CRectangle rectangle = CRectangle(CPoint(0, 0), 10, 20, "000000", "ffffff");
 	CCircle circle = CCircle(CPoint(0, 0), 0.5 , "ff0000", "00ff00");
 };
 
 BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 	BOOST_AUTO_TEST_SUITE(Point)
+		BOOST_AUTO_TEST_CASE(default_constructor_test)
+		{
+			CPoint point;
+			BOOST_CHECK_EQUAL(point.x, 0);
+			BOOST_CHECK_EQUAL(point.y, 0);
+		}
 		BOOST_AUTO_TEST_CASE(can_convert_point_data_to_string)
 		{
 			CPoint point(1.42, 18.55);
 			std::string expectedString = "1.420000 18.550000";
-			BOOST_CHECK_EQUAL(expectedString, point.ToString());
+			BOOST_CHECK_EQUAL(expectedString, point.PointToString());
 		}
 		BOOST_AUTO_TEST_CASE(can_be_compared)
 		{
@@ -96,7 +102,7 @@ BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 
 		BOOST_AUTO_TEST_CASE(can_convert_segment_data_to_string)
 		{
-			std::string expectedString = "line segment 1.000000 0.000000 15.000000 0.000000 ff0000";
+			std::string expectedString = "line segment:\nArea = 0\nPerimeter = 14\nColor outline = ff0000\nStart point: 1.000000 0.000000\nEnd point: 15.000000 0.000000";
 			BOOST_CHECK_EQUAL(expectedString, segment.ToString());
 		}
 	BOOST_AUTO_TEST_SUITE_END()
@@ -127,20 +133,20 @@ BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 
 		BOOST_AUTO_TEST_CASE(can_get_outline_color)
 		{
-			std::string expectedColor = "0000ff";
+			std::string expectedColor = "1234ff";
 			BOOST_CHECK_EQUAL(expectedColor, triangle.GetOutlineColor());
 		}
 
 		BOOST_AUTO_TEST_CASE(can_get_fill_color)
 		{
-			std::string expectedColor = "ff0000";
+			std::string expectedColor = "ff1234";
 			BOOST_CHECK_EQUAL(expectedColor, triangle.GetFillColor());
 		}
 
 		BOOST_AUTO_TEST_CASE(can_convert_triangle_data_to_string)
 		{
 			std::string expectedString = 
-				"triangle 0.000000 0.000000 0.000000 3.000000 4.000000 0.000000 0000ff ff0000";
+				"triangle:\nArea = 6\nPerimeter = 12\nColor outline = 1234ff\nVertex1 = 0.000000 0.000000\nVertex2 = 0.000000 3.000000\nVertex3 = 4.000000 0.000000\nFill color = ff1234";
 			BOOST_CHECK_EQUAL(expectedString, triangle.ToString());
 		}
 	BOOST_AUTO_TEST_SUITE_END()
@@ -196,8 +202,7 @@ BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 
 		BOOST_AUTO_TEST_CASE(can_convert_rectangle_data_to_string)
 		{
-			std::string expectedString =
-				"rectangle 0.000000 0.000000 10.000000 20.000000 000000 ffffff";
+			std::string expectedString = "rectangle:\nArea = 200\nPerimeter = 60\nColor outline = 000000\nWidth = 10\nHeight = 20\nFill color = ffffff";
 			BOOST_CHECK_EQUAL(expectedString, rectangle.ToString());
 		}
 	BOOST_AUTO_TEST_SUITE_END()
@@ -241,7 +246,7 @@ BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 
 		BOOST_AUTO_TEST_CASE(can_convert_circle_data_to_string)
 		{
-			std::string expectedString = "circle 0.000000 0.000000 0.500000 ff0000 00ff00";
+			std::string expectedString = "circle:\nArea = 0.785398\nPerimeter = 3.14159\nColor outline = ff0000\nRadius = 0.5\nCenter = 0.000000 0.000000\nFill color = 00ff00";
 			BOOST_CHECK_EQUAL(expectedString, circle.ToString());
 		}
 	BOOST_AUTO_TEST_SUITE_END()

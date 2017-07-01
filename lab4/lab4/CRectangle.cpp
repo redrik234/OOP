@@ -2,7 +2,7 @@
 #include "CRectangle.h"
 
 CRectangle::CRectangle(CPoint leftTopPoint, double width, double height, string outlineColor, string fillColor)
-	:CSolidShape(outlineColor, fillColor)
+	:CSolidShape("rectangle", outlineColor, fillColor)
 	, m_leftTop(leftTopPoint)
 	, m_width(width)
     , m_height(height)
@@ -49,12 +49,9 @@ double CRectangle::GetHeight() const
 	return m_height;
 }
 
-string CRectangle::ToString() const
+void CRectangle::AppendProperties(ostream & strm) const
 {
-	return m_name
-		+ " " + m_leftTop.ToString()
-		+ " " + to_string(m_width)
-		+ " " + to_string(m_height)
-		+ " " + GetOutlineColor()
-		+ " " + CSolidShape::GetFillColor();
+	strm << "\nWidth = " << m_width
+		<< "\nHeight = " << m_height
+		<< "\nFill color = " << GetFillColor();
 }

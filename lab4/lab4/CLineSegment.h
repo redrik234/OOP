@@ -14,13 +14,12 @@ public:
 
 	CPoint GetStartPoint() const;
 	CPoint GetEndPoint() const;
-	double GetArea() const;
-	double GetPerimeter() const;
-	string ToString() const;
-	string GetOutlineColor() const;
+	double GetArea() const override;
+	double GetPerimeter() const override;
+	string GetOutlineColor() const override;
+protected:
+	void AppendProperties(ostream & strm) const override;
 private:
-	string m_name = "line segment";
-
 	CPoint m_startPoint;
 	CPoint m_endPoint;
 };

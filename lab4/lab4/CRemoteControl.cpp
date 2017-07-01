@@ -41,17 +41,13 @@ void CRemoteControl::PrintInfo(ostream & output)
 
 		auto shapeWithMinPerimeter = min_element(m_shapes.begin(), m_shapes.end(), CmpPerimeters);
 
-		output << "Shape with maximum area: " << endl;
+		output << "\nShape with maximum area: " << endl;
 		output << (*shapeWithMaxArea)->ToString() << endl;
-		output << "Area: " << (*shapeWithMaxArea)->GetArea() << endl;
-		output << "Perimeter: " << (*shapeWithMaxArea)->GetPerimeter() << endl;
 
 		output << endl;
 
 		output << "Shape with min perimeter: " << endl;
 		output << (*shapeWithMinPerimeter)->ToString() << endl;
-		output << "Area: " << (*shapeWithMinPerimeter)->GetArea() << endl;
-		output << "Perimeter: " << (*shapeWithMinPerimeter)->GetPerimeter() << endl;
 	}
 }
 
@@ -134,7 +130,7 @@ bool CRemoteControl::CreateCircle(istream & args)
 	center.x = stoi(parameters[0]);
 	center.y = stoi(parameters[1]);
 
-	radius = stoi(parameters[2]);
+	radius = stod(parameters[2]);
 	if (radius < 0)
 	{
 		m_output << "Circle radius can't be negative value." << endl;

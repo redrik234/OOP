@@ -4,7 +4,7 @@
 #include "CPoint.h"
 
 CTriangle::CTriangle(CPoint vertex1, CPoint vertex2, CPoint vertex3, string outlineColor, string fillColor)
-	:CSolidShape(outlineColor, fillColor)
+	:CSolidShape("triangle", outlineColor, fillColor)
 {
 	m_vertices.push_back(vertex1);
 	m_vertices.push_back(vertex2);
@@ -36,16 +36,6 @@ double CTriangle::GetArea() const
 	);
 }
 
-string CTriangle::ToString() const
-{
-	return m_name
-		+ " " + m_vertices[0].ToString()
-		+ " " + m_vertices[1].ToString()
-		+ " " + m_vertices[2].ToString()
-		+ " " + GetOutlineColor()
-		+ " " + CSolidShape::GetFillColor();
-}
-
 string CTriangle::GetOutlineColor() const
 {
 	return CSolidShape::GetOutlineColor();
@@ -69,4 +59,12 @@ CPoint CTriangle::GetVertex2() const
 CPoint CTriangle::GetVertex3() const
 {
 	return m_vertices[2];
+}
+
+void CTriangle::AppendProperties(std::ostream & strm) const
+{
+	strm << "\nVertex1 = " << m_vertices[0].PointToString()
+		<< "\nVertex2 = " << m_vertices[1].PointToString()
+		<< "\nVertex3 = " << m_vertices[2].PointToString()
+		<< "\nFill color = " << GetFillColor();
 }

@@ -2,7 +2,7 @@
 #include "CLineSegment.h"
 
 CLineSegment::CLineSegment(CPoint startPoint, CPoint endPoint, string outlineColor)
-	: CShape(outlineColor)
+	: CShape("line segment", outlineColor)
 	, m_startPoint(startPoint)
 	, m_endPoint(endPoint)
 {
@@ -28,15 +28,13 @@ double CLineSegment::GetPerimeter() const
 	return sqrt(pow((m_endPoint.x - m_startPoint.x), 2) + pow((m_endPoint.y - m_startPoint.y), 2));
 }
 
-string CLineSegment::ToString() const
-{
-	return m_name 
-		+ " " + m_startPoint.ToString() 
-		+ " " + m_endPoint.ToString() 
-		+ " " + CShape::GetOutlineColor();
-}
-
 string CLineSegment::GetOutlineColor() const
 {
 	return CShape::GetOutlineColor();
+}
+
+void CLineSegment::AppendProperties(ostream & strm) const
+{
+	strm << "\nStart point: " << m_startPoint.PointToString()
+		<< "\nEnd point: " << m_endPoint.PointToString();
 }

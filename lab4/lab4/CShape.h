@@ -5,15 +5,15 @@ class CShape : public virtual IShape
 {
 public:
 	CShape() = default;
-	CShape(string color);
+	CShape(const string & type, string color);
 
 	~CShape() = default;
 
-	virtual double GetPerimeter() const = 0;
-	virtual double GetArea() const = 0;
-	virtual string ToString() const = 0;
-	virtual string GetOutlineColor() const;
-
+	string ToString() const;
+	string GetOutlineColor() const override;
+protected:
+	virtual void AppendProperties(std::ostream & strm) const = 0;
 private:
 	string m_outlineColor;
+	string m_type;
 };

@@ -11,18 +11,17 @@ public:
 	CCircle(CPoint center, double radius, string outlineColor, string fillColor);
 	~CCircle() = default;
 
-	double GetArea() const;
-	double GetPerimeter() const;
+	double GetArea() const override;
+	double GetPerimeter() const override;
 
-	string ToString() const override;
 	string GetOutlineColor() const override;
 	string GetFillColor() const override;
 
 	CPoint GetCenter() const;
 	double GetRadius() const;
+protected:
+	void AppendProperties(ostream & strm) const override;
 private:
-	string m_name = "circle";
-
 	CPoint m_center;
 	double m_radius;
 };

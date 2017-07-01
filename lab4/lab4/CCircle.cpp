@@ -5,7 +5,7 @@
 #include "math.h"
 
 CCircle::CCircle(CPoint center, double radius, string outlineColor, string fillColor)
-	: CSolidShape(outlineColor, fillColor)
+	: CSolidShape("circle", outlineColor, fillColor)
 	, m_center(center)
 	, m_radius(radius)
 {
@@ -41,11 +41,9 @@ double CCircle::GetRadius() const
 	return m_radius;
 }
 
-string CCircle::ToString() const
+void CCircle::AppendProperties(ostream & strm) const
 {
-	return m_name
-		+ " " + m_center.ToString()
-		+ " " + to_string(m_radius)
-		+ " " + GetOutlineColor()
-		+ " " + CSolidShape::GetFillColor();
+	strm << "\nRadius = " << m_radius
+		<< "\nCenter = " << m_center.PointToString()
+		<< "\nFill color = " << GetFillColor();
 }
