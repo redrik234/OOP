@@ -8,7 +8,7 @@ public:
 
 	CPoint(double x0, double y0);
 
-	std::string PointToString() const;
+	std::string ToString() const;
 
 	bool operator==(const CPoint &point) const;
 	bool operator!=(const CPoint &point) const;

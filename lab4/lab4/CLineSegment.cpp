@@ -35,6 +35,6 @@ string CLineSegment::GetOutlineColor() const
 
 void CLineSegment::AppendProperties(ostream & strm) const
 {
-	strm << "\nStart point: " << m_startPoint.PointToString()
-		<< "\nEnd point: " << m_endPoint.PointToString();
+	strm << "\nStart point: " << m_startPoint.ToString()
+		<< "\nEnd point: " << m_endPoint.ToString();
 }

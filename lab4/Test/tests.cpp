@@ -57,7 +57,7 @@ BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 		{
 			CPoint point(1.42, 18.55);
 			std::string expectedString = "1.420000 18.550000";
-			BOOST_CHECK_EQUAL(expectedString, point.PointToString());
+			BOOST_CHECK_EQUAL(expectedString, point.ToString());
 		}
 		BOOST_AUTO_TEST_CASE(can_be_compared)
 		{

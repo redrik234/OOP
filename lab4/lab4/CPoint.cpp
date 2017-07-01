@@ -10,7 +10,7 @@ CPoint::CPoint(double x0, double y0)
 {
 }
 
-string CPoint::PointToString() const
+string CPoint::ToString() const
 {
 	return std::to_string(x) + " " + std::to_string(y);
 }

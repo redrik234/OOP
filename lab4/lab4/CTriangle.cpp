@@ -63,8 +63,8 @@ CPoint CTriangle::GetVertex3() const
 
 void CTriangle::AppendProperties(std::ostream & strm) const
 {
-	strm << "\nVertex1 = " << m_vertices[0].PointToString()
-		<< "\nVertex2 = " << m_vertices[1].PointToString()
-		<< "\nVertex3 = " << m_vertices[2].PointToString()
+	strm << "\nVertex1 = " << m_vertices[0].ToString()
+		<< "\nVertex2 = " << m_vertices[1].ToString()
+		<< "\nVertex3 = " << m_vertices[2].ToString()
 		<< "\nFill color = " << GetFillColor();
 }

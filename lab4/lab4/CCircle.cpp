@@ -44,6 +44,6 @@ double CCircle::GetRadius() const
 void CCircle::AppendProperties(ostream & strm) const
 {
 	strm << "\nRadius = " << m_radius
-		<< "\nCenter = " << m_center.PointToString()
+		<< "\nCenter = " << m_center.ToString()
 		<< "\nFill color = " << GetFillColor();
 }
