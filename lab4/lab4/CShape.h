@@ -7,8 +7,6 @@ public:
 	CShape() = default;
 	CShape(const string & type, string color);
 
-	~CShape() = default;
-
 	string ToString() const;
 	string GetOutlineColor() const override;
 protected:
