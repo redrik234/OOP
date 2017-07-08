@@ -8,15 +8,10 @@ public:
 	CSolidShape() = default;
 	CSolidShape(const string & type, string outlineColor, string fillColor);
 
-	virtual double GetPerimeter() const = 0;
-	virtual double GetArea() const = 0;
-
-	string ToString() const;
+	string ToString() const override;
 
 	string GetFillColor() const override;
-	string GetOutlineColor() const;
-protected:
-	virtual void AppendProperties(std::ostream & strm) const = 0;
+	string GetOutlineColor() const override;
 private:
 	string m_fillColor;
 };

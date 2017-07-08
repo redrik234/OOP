@@ -150,7 +150,7 @@
     <ClInclude Include="CLineSegment.h" />
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
-    <ClInclude Include="CRemoteControl.h" />
+    <ClInclude Include="CMenu.h" />
     <ClInclude Include="CShape.h" />
     <ClInclude Include="CSolidShape.h" />
     <ClInclude Include="CTriangle.h" />
@@ -164,7 +164,7 @@
     <ClCompile Include="CLineSegment.cpp" />
     <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CRectangle.cpp" />
-    <ClCompile Include="CRemoteControl.cpp" />
+    <ClCompile Include="CMenu.cpp" />
     <ClCompile Include="CShape.cpp" />
     <ClCompile Include="CSolidShape.cpp" />
     <ClCompile Include="CTriangle.cpp" />

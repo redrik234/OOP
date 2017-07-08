@@ -5,23 +5,23 @@
 #include "../lab4/CTriangle.h"
 #include "../lab4/CRectangle.h"
 #include "../lab4/CCircle.h"
-#include "../lab4/CRemoteControl.h"
+#include "../lab4/CMenu.h"
 
 #define _USE_MATH_DEFINES
 #include "math.h"
 
-struct RemoteControlDependencies
+struct MenuDependencies
 {
 	std::stringstream input;
 	std::stringstream output;
 };
 
-struct RemoteControlFixture : RemoteControlDependencies
+struct MenuFixture : MenuDependencies
 {
-	CRemoteControl remoteControl;
+	CMenu menu;
 
-	RemoteControlFixture()
-		: remoteControl(input, output)
+	MenuFixture()
+		: menu(input, output)
 	{
 	}
 
@@ -30,7 +30,7 @@ struct RemoteControlFixture : RemoteControlDependencies
 		output = std::stringstream();
 		input = std::stringstream();
 		BOOST_CHECK(input << command);
-		BOOST_CHECK(remoteControl.HandleCommand());
+		BOOST_CHECK(menu.HandleCommand());
 		BOOST_CHECK(input.eof());
 		BOOST_CHECK_EQUAL(output.str(), expectedOutput);
 	}
@@ -252,7 +252,7 @@ BOOST_FIXTURE_TEST_SUITE(Shapes, DefaultShapes)
 	BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_FIXTURE_TEST_SUITE(Remote_Control, RemoteControlFixture)
+BOOST_FIXTURE_TEST_SUITE(Menu, MenuFixture)
 	BOOST_AUTO_TEST_CASE(can_handle_correct_line_command)
 	{
 		VerifyCommandHandling("line 0 0 1 1 #ffffff", "line segment was created\n");

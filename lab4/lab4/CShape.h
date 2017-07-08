@@ -7,7 +7,7 @@ public:
 	CShape() = default;
 	CShape(const string & type, string color);
 
-	string ToString() const;
+	string ToString() const override;
 	string GetOutlineColor() const override;
 protected:
 	virtual void AppendProperties(std::ostream & strm) const = 0;

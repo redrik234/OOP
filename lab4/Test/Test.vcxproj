@@ -159,9 +159,9 @@
   <ItemGroup>
     <ClInclude Include="..\lab4\CCircle.h" />
     <ClInclude Include="..\lab4\CLineSegment.h" />
+    <ClInclude Include="..\lab4\CMenu.h" />
     <ClInclude Include="..\lab4\CPoint.h" />
     <ClInclude Include="..\lab4\CRectangle.h" />
-    <ClInclude Include="..\lab4\CRemoteControl.h" />
     <ClInclude Include="..\lab4\CShape.h" />
     <ClInclude Include="..\lab4\CSolidShape.h" />
     <ClInclude Include="..\lab4\CTriangle.h" />
@@ -173,9 +173,9 @@
   <ItemGroup>
     <ClCompile Include="..\lab4\CCircle.cpp" />
     <ClCompile Include="..\lab4\CLineSegment.cpp" />
+    <ClCompile Include="..\lab4\CMenu.cpp" />
     <ClCompile Include="..\lab4\CPoint.cpp" />
     <ClCompile Include="..\lab4\CRectangle.cpp" />
-    <ClCompile Include="..\lab4\CRemoteControl.cpp" />
     <ClCompile Include="..\lab4\CShape.cpp" />
     <ClCompile Include="..\lab4\CSolidShape.cpp" />
     <ClCompile Include="..\lab4\CTriangle.cpp" />
