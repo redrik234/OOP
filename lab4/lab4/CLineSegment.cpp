@@ -28,11 +28,6 @@ double CLineSegment::GetPerimeter() const
 	return sqrt(pow((m_endPoint.x - m_startPoint.x), 2) + pow((m_endPoint.y - m_startPoint.y), 2));
 }
 
-string CLineSegment::GetOutlineColor() const
-{
-	return CShape::GetOutlineColor();
-}
-
 void CLineSegment::AppendProperties(ostream & strm) const
 {
 	strm << "\nStart point: " << m_startPoint.ToString()

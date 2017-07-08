@@ -15,7 +15,6 @@ public:
 	CPoint GetEndPoint() const;
 	double GetArea() const override;
 	double GetPerimeter() const override;
-	string GetOutlineColor() const override;
 protected:
 	void AppendProperties(ostream & strm) const override;
 private:

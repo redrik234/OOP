@@ -25,13 +25,14 @@ struct MenuFixture : MenuDependencies
 	{
 	}
 
-	void VerifyCommandHandling(const std::string & command, const std::string & expectedOutput)
+	void VerifyCommandHandling(const std::string & command, const int numberOfShapes, const std::string & expectedOutput)
 	{
 		output = std::stringstream();
 		input = std::stringstream();
 		BOOST_CHECK(input << command);
 		BOOST_CHECK(menu.HandleCommand());
 		BOOST_CHECK(input.eof());
+		BOOST_CHECK_EQUAL(menu.GetNumberOfShapes(), numberOfShapes);
 		BOOST_CHECK_EQUAL(output.str(), expectedOutput);
 	}
 };
@@ -255,53 +256,53 @@ BOOST_AUTO_TEST_SUITE_END()
 BOOST_FIXTURE_TEST_SUITE(Menu, MenuFixture)
 	BOOST_AUTO_TEST_CASE(can_handle_correct_line_command)
 	{
-		VerifyCommandHandling("line 0 0 1 1 #ffffff", "line segment was created\n");
+		VerifyCommandHandling("line 0 0 1 1 #ffffff", 1, "line segment was created\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_incorrect_line_command)
 	{
-		VerifyCommandHandling("line a s d s a q w e r", "Invalid parameters count.\n"
+		VerifyCommandHandling("line a s d s a q w e r", 0, "Invalid parameters count.\n"
 			"Usage line <x1> <y1> <x2> <y2> <outlineColor>\n");
-		VerifyCommandHandling("line", "Invalid parameters count.\n"
+		VerifyCommandHandling("line", 0, "Invalid parameters count.\n"
 			"Usage line <x1> <y1> <x2> <y2> <outlineColor>\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_correct_circle_command)
 	{
-		VerifyCommandHandling("circle 0 0 12 #fafafa #ababab", "circle was created\n");
+		VerifyCommandHandling("circle 0 0 12 #fafafa #ababab", 1, "circle was created\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_incorrect_circle_command)
 	{
-		VerifyCommandHandling("circle line", "Invalid parameters count.\n"
+		VerifyCommandHandling("circle line", 0, "Invalid parameters count.\n"
 			"Usage circle <x1> <y1> <radius> <outlineColor> <fillColor>\n");
-		VerifyCommandHandling("circle 0 0 A", "Invalid parameters count.\n"
+		VerifyCommandHandling("circle 0 0 A", 0, "Invalid parameters count.\n"
 			"Usage circle <x1> <y1> <radius> <outlineColor> <fillColor>\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_correct_triangle_command)
 	{
-		VerifyCommandHandling("triangle 0 0 0 5 3 0 #fafafa #ababab", "triangle was created\n");
+		VerifyCommandHandling("triangle 0 0 0 5 3 0 #fafafa #ababab", 1, "triangle was created\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_incorrect_triangle_command)
 	{
-		VerifyCommandHandling("triangle ababab", "Invalid parameters count.\n"
+		VerifyCommandHandling("triangle ababab", 0, "Invalid parameters count.\n"
 			"Usage triangle <x1> <y1> <x2> <y2> <x3> <y3> <outlineColor> <fillColor>\n");
-		VerifyCommandHandling("triangle 42 42", "Invalid parameters count.\n"
+		VerifyCommandHandling("triangle 42 42", 0, "Invalid parameters count.\n"
 			"Usage triangle <x1> <y1> <x2> <y2> <x3> <y3> <outlineColor> <fillColor>\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_correct_rectangle_command)
 	{
-		VerifyCommandHandling("rectangle 0 0 30 40 #fafafa #ababab", "rectangle was created\n");
+		VerifyCommandHandling("rectangle 0 0 30 40 #fafafa #ababab", 1, "rectangle was created\n");
 	}
 
 	BOOST_AUTO_TEST_CASE(can_handle_incorrect_rectangle_command)
 	{
-		VerifyCommandHandling("rectangle 32 A 28 C", "Invalid parameters count.\n"
+		VerifyCommandHandling("rectangle 32 A 28 C", 0, "Invalid parameters count.\n"
 			"Usage rectangle <x1> <y1> <width> <height> <outlineColor> <fillColor>\n");
-		VerifyCommandHandling("rectangle", "Invalid parameters count.\n"
+		VerifyCommandHandling("rectangle", 0, "Invalid parameters count.\n"
 			"Usage rectangle <x1> <y1> <width> <height> <outlineColor> <fillColor>\n");
 	}
 BOOST_AUTO_TEST_SUITE_END()

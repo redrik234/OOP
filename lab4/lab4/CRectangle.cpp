@@ -19,16 +19,6 @@ double CRectangle::GetPerimeter() const
 	return (2 * (m_width + m_height));
 }
 
-string CRectangle::GetOutlineColor() const
-{
-	return CSolidShape::GetOutlineColor();
-}
-
-string CRectangle::GetFillColor() const
-{
-	return CSolidShape::GetFillColor();
-}
-
 CPoint CRectangle::GetLeftTop() const
 {
 	return m_leftTop;

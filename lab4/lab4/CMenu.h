@@ -12,6 +12,7 @@ public:
 	CMenu(istream & input, ostream & output);
 	bool HandleCommand();
 	void PrintInfo(ostream & output);
+	int GetNumberOfShapes() const;
 private:
 	bool CreateLineSegment(istream & args);
 	bool CreateCircle(istream & args);

@@ -36,16 +36,6 @@ double CTriangle::GetArea() const
 	);
 }
 
-string CTriangle::GetOutlineColor() const
-{
-	return CSolidShape::GetOutlineColor();
-}
-
-string CTriangle::GetFillColor() const
-{
-	return CSolidShape::GetFillColor();
-}
-
 CPoint CTriangle::GetVertex1() const
 {
 	return m_vertices[0];

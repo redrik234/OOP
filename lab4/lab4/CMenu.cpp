@@ -206,3 +206,8 @@ bool CMenu::CreateRectangle(istream & args)
 	m_output << "rectangle was created" << endl;
 	return true;
 }
+
+int CMenu::GetNumberOfShapes() const
+{
+	return m_shapes.size();
+}

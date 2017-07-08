@@ -14,9 +14,6 @@ public:
 	double GetArea() const override;
 	double GetPerimeter() const override;
 
-	string GetOutlineColor() const override;
-	string GetFillColor() const override;
-
 	CPoint GetCenter() const;
 	double GetRadius() const;
 protected:

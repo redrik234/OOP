@@ -13,9 +13,6 @@ public:
 	double GetArea() const override;
 	double GetPerimeter() const override;
 
-	string GetOutlineColor() const override;
-	string GetFillColor() const override;
-
 	CPoint GetLeftTop() const;
 	CPoint GetRightBottom() const;
 	double GetWidth() const;
