@@ -29,20 +29,16 @@ void ProcessVector(vector<double> & numbers)
 		auto maxNumber = max_element(numbers.begin(), numbers.end());
 		boost::transform(numbers, numbers.begin(), arg1 / (*maxNumber / 2));
 	}*/
-
-	vector<double> tmp;
-
+	
 	if (!numbers.empty())
 	{
-		auto maxNumber = max_element(numbers.begin(), numbers.end());
-		transform(numbers.begin(), numbers.end(), back_inserter(tmp),
+		auto maxNumber = *max_element(numbers.begin(), numbers.end());
+		transform(numbers.begin(), numbers.end(), numbers.begin(),
 			[=](double number)->double 
 		{
-			return number / (*maxNumber / 2);
+			return number / (maxNumber / 2);
 		});
 	}
-
-	numbers = tmp;
 }
 
 void SortVector(vector<double> & numbers)
