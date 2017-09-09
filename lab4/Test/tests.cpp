@@ -32,7 +32,7 @@ struct MenuFixture : MenuDependencies
 		BOOST_CHECK(input << command);
 		BOOST_CHECK(menu.HandleCommand());
 		BOOST_CHECK(input.eof());
-		BOOST_CHECK_EQUAL(menu.GetNumberOfShapes(), numberOfShapes);
+		BOOST_CHECK_EQUAL(menu.GetNumberOfShapes().size(), numberOfShapes);
 		BOOST_CHECK_EQUAL(output.str(), expectedOutput);
 	}
 };

@@ -207,7 +207,7 @@ bool CMenu::CreateRectangle(istream & args)
 	return true;
 }
 
-int CMenu::GetNumberOfShapes() const
+vector<shared_ptr<IShape>> CMenu::GetСollectionOfShapes() const
 {
-	return m_shapes.size();
+	return m_shapes;
 }
